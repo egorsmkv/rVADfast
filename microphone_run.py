@@ -1,6 +1,4 @@
 import os
-import sys
-import code
 import pyaudio
 import wave
 

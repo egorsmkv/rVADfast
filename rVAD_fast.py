@@ -1,10 +1,5 @@
-from __future__ import division
 import numpy 
-import pickle
-import os
 import sys
-import math
-import code
 from scipy.signal import lfilter
 import speechproc
 from copy import deepcopy
@@ -27,7 +22,7 @@ finwav=str(sys.argv[1])
 fvad=str(sys.argv[2])
 
 fs, data = speechproc.speech_wave(finwav)   
-ft, flen, fsh10, nfr10 =speechproc.sflux(data, fs, winlen, ovrlen, nftt)
+ft, flen, fsh10, nfr10,_ =speechproc.sflux(data, fs, winlen, ovrlen, nftt)
 
 
 # --spectral flatness --
@@ -57,8 +52,3 @@ vad_seg=speechproc.snre_vad(fdata,  nfr10, flen, fsh10, ENERGYFLOOR, pv01, pvblk
 
 numpy.savetxt(fvad, vad_seg.astype(int),  fmt='%i')
 print("%s --> %s " %(finwav, fvad))
-
-data=None; pv01=None; pitch=None; fdata=None; pvblk=None; vad_seg=None
-     
-
-

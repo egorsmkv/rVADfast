@@ -1,14 +1,8 @@
 from __future__ import division
 import numpy
-import sys
-import os
 import math
-import struct
 import scipy.io.wavfile as wav
-from scipy.fftpack import dct
-from scipy.signal import lfilter
 from copy import deepcopy
-import code
 
 #References
 # Z.-H. Tan and B. Lindberg, Low-complexity variable frame rate analysis for speech recognition and voice activity detection.
@@ -86,7 +80,7 @@ def sflux(data, fs, winlen, ovrlen, nftt):
 
 
     
-    return ft, flen, fsh10, nfr10
+    return ft, flen, fsh10, nfr10, xf
 
 
 def snre_highenergy(fdata, nfr10, flen, fsh10, ENERGYFLOOR, pv01, pvblk):
